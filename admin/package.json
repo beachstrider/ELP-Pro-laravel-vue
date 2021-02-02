@@ -1,0 +1,78 @@
+{
+  "name": "clean-ui-admin-template-vue",
+  "version": "3.2.2",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-demo": "VUE_APP_AUTHENTICATED=true vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@riophae/vue-treeselect": "^0.4.0",
+    "ant-design-vue": "^1.5.4",
+    "axios": "^0.21.1",
+    "axios-mock-adapter": "^1.18.1",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.13.0",
+    "c3": "^0.7.15",
+    "chart.js": "^2.9.3",
+    "chartist-plugin-tooltips-updated": "^0.0.21",
+    "core-js": "^3.6.5",
+    "echarts": "^4.2.1",
+    "firebase": "^7.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "moment-timezone": "^0.5.31",
+    "qs": "^6.9.4",
+    "register-service-worker": "^1.7.1",
+    "secure-ls": "^1.2.6",
+    "store": "^2.0.12",
+    "v-chartist": "^0.1.6",
+    "vue": "^2.6.11",
+    "vue-c3": "^1.2.11",
+    "vue-chartjs": "^3.5.0",
+    "vue-custom-scrollbar": "^1.1.0",
+    "vue-draggable-nested-tree": "^3.0.0-beta2",
+    "vue-echarts": "^4.0.3",
+    "vue-fragment": "^1.5.1",
+    "vue-i18n": "^8.17.4",
+    "vue-nprogress": "^0.1.5",
+    "vue-page-title": "^1.2.1",
+    "vue-quill-editor": "^3.0.6",
+    "vue-router": "^3.1.6",
+    "vue-select": "^3.10.8",
+    "vue-spinner": "^1.0.4",
+    "vue2-dropzone": "^3.6.0",
+    "vuedraggable": "^2.23.2",
+    "vuejs-datepicker": "^1.6.2",
+    "vuelayers": "^0.11.23",
+    "vuex": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-pwa": "^4.4.1",
+    "@vue/cli-service": "^4.4.1",
+    "babel-plugin-import": "^1.13.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^10.2.0",
+    "node-sass": "^4.14.0",
+    "prettier": "^2.0.5",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+image: registry.gitlab.utilis.mk/root/alcolm-logistics-portal
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - vendor/
+    - admin/node_modules/
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - ~/.composer/vendor/bin/dep -vvv -f gitlab_deploy.php build local
+  artifacts:
+    expire_in: 2 hrs
+    paths:
+      - artifact/
+  when: manual
+  only:
+    - master
+
+deploy_stg:
+  stage: deploy
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$STG_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+    - ~/.composer/vendor/bin/dep -vvv -f gitlab_deploy.php deploy-build-stg stg_master
+  environment:
+    name: staging
+    url: http://192.168.1.1
+  when: manual
+  only:
+    - master

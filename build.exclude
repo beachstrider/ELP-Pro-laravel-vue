@@ -1,0 +1,7 @@
+.git
+build.exclude
+artifact
+.docker/gitlab
+.gitlab-ci.yml
+gitlab_deploy.php
+admin
